@@ -44,7 +44,8 @@ def signup_view(request):
                       from_email,
                       to_email,
                       html_message = html_message,
-                      fail_silently = False)
+                      fail_silently = True
+                      )
 
 
 
@@ -154,8 +155,9 @@ def like_view(request):
                 LikeModel.objects.create(post_id=post_id, user=user)
             else:
                 existing_like.delete()
-
             return redirect('/feed/')
+
+
     else:
      return redirect('/login/')
 
